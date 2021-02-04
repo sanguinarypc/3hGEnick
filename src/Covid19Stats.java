@@ -163,6 +163,8 @@ public class Covid19Stats extends javax.swing.JFrame {
       
    }
    
+   
+  
    /**
     * @param args the command line arguments
     */
