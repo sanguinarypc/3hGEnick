@@ -25,8 +25,8 @@ public class Covid19Stats extends javax.swing.JFrame {
       // set JFrame to appear centered, regardless of monitor resolution
       // Ορίσετε το JFrame να εμφανίζεται στο κέντρο,
       // ανεξάρτητα από την ανάλυση της οθόνης
-      this.pack();
-      this.setLocationRelativeTo(null);
+      super.pack();
+      super.setLocationRelativeTo(null);
       //this.setState(Frame.NORMAL);
       // this maximizes the jframe
       //myFrame.setState(Frame.NORMAL);
@@ -55,11 +55,11 @@ public class Covid19Stats extends javax.swing.JFrame {
       jButton2 = new javax.swing.JButton();
       jButton3 = new javax.swing.JButton();
       jButton4 = new javax.swing.JButton();
-      jLabel1 = new javax.swing.JLabel();
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       setTitle("Σύστημα Covid19-Stats");
-      getContentPane().setLayout(null);
+      setPreferredSize(new java.awt.Dimension(800, 600));
+      setSize(new java.awt.Dimension(0, 0));
 
       jButton1.setText("Διαχείριση δεδομένων Covid19");
       jButton1.setToolTipText("Διαχείριση δεδομένων Covid19");
@@ -68,8 +68,6 @@ public class Covid19Stats extends javax.swing.JFrame {
             jButton1ActionPerformed(evt);
          }
       });
-      getContentPane().add(jButton1);
-      jButton1.setBounds(98, 60, 179, 23);
 
       jButton2.setText("Προβολή δεδομένων Covid19 ανά χώρα");
       jButton2.setToolTipText("Προβολή δεδομένων Covid19 ανά χώρα");
@@ -78,18 +76,16 @@ public class Covid19Stats extends javax.swing.JFrame {
             jButton2ActionPerformed(evt);
          }
       });
-      getContentPane().add(jButton2);
-      jButton2.setBounds(87, 109, 225, 23);
 
       jButton3.setText("Προβολή δεδομένων Covid19 σε χάρτη");
       jButton3.setToolTipText("Προβολή δεδομένων Covid19 σε χάρτη");
+      jButton3.setMaximumSize(new java.awt.Dimension(220, 23));
+      jButton3.setMinimumSize(new java.awt.Dimension(220, 23));
       jButton3.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
             jButton3ActionPerformed(evt);
          }
       });
-      getContentPane().add(jButton3);
-      jButton3.setBounds(87, 167, 225, 23);
 
       jButton4.setText("Έξοδος Προγράμματος");
       jButton4.setToolTipText("Έξοδος Προγράμματος.");
@@ -98,12 +94,33 @@ public class Covid19Stats extends javax.swing.JFrame {
             jButton4ActionPerformed(evt);
          }
       });
-      getContentPane().add(jButton4);
-      jButton4.setBounds(87, 208, 225, 23);
 
-      jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\coronavirus.png")); // NOI18N
-      getContentPane().add(jLabel1);
-      jLabel1.setBounds(10, 10, 20, 20);
+      javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+      getContentPane().setLayout(layout);
+      layout.setHorizontalGroup(
+         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+         .addGroup(layout.createSequentialGroup()
+            .addGap(269, 269, 269)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+               .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(268, Short.MAX_VALUE))
+      );
+      layout.setVerticalGroup(
+         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+         .addGroup(layout.createSequentialGroup()
+            .addGap(130, 130, 130)
+            .addComponent(jButton1)
+            .addGap(18, 18, 18)
+            .addComponent(jButton2)
+            .addGap(18, 18, 18)
+            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(jButton4)
+            .addContainerGap(124, Short.MAX_VALUE))
+      );
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -130,6 +147,7 @@ public class Covid19Stats extends javax.swing.JFrame {
 
    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
       // TODO add your handling code here:
+      new CovidViewData().setVisible(true);
    }//GEN-LAST:event_jButton3ActionPerformed
 
    
@@ -185,6 +203,5 @@ public class Covid19Stats extends javax.swing.JFrame {
    private javax.swing.JButton jButton2;
    private javax.swing.JButton jButton3;
    private javax.swing.JButton jButton4;
-   private javax.swing.JLabel jLabel1;
    // End of variables declaration//GEN-END:variables
 }

@@ -39,6 +39,7 @@ public class CovidDataManagment extends javax.swing.JFrame {
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       setTitle("Σύστημα Covid19-Stats");
+      setPreferredSize(new java.awt.Dimension(800, 600));
 
       jButton1.setText("Εισαγωγή χωρών");
       jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,24 +66,20 @@ public class CovidDataManagment extends javax.swing.JFrame {
       getContentPane().setLayout(layout);
       layout.setHorizontalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGroup(layout.createSequentialGroup()
-            .addGap(195, 195, 195)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(jButton3)
-               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                  .addComponent(jButton2)
-                  .addComponent(jButton1))
-               .addComponent(jButton4))
-            .addContainerGap(68, Short.MAX_VALUE))
          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton5)
-            .addGap(56, 56, 56))
+            .addContainerGap(269, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+               .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(288, 288, 288))
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGroup(layout.createSequentialGroup()
-            .addGap(64, 64, 64)
+         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap(106, Short.MAX_VALUE)
             .addComponent(jButton1)
             .addGap(18, 18, 18)
             .addComponent(jButton2)
@@ -92,7 +89,7 @@ public class CovidDataManagment extends javax.swing.JFrame {
             .addComponent(jButton4)
             .addGap(18, 18, 18)
             .addComponent(jButton5)
-            .addContainerGap(49, Short.MAX_VALUE))
+            .addGap(107, 107, 107))
       );
 
       pack();

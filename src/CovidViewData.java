@@ -37,10 +37,16 @@ public class CovidViewData extends javax.swing.JFrame {
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       setTitle("Σύστημα Covid19-Stats");
+      setPreferredSize(new java.awt.Dimension(800, 600));
 
       jButton1.setText("Προβολή σε διάγραμμα");
 
       jButton2.setText("Προβολή σε Χάρτη");
+      jButton2.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton2ActionPerformed(evt);
+         }
+      });
 
       jButton3.setText("Διαγραφή δεδομένων");
 
@@ -56,15 +62,13 @@ public class CovidViewData extends javax.swing.JFrame {
       layout.setHorizontalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
-            .addGap(147, 147, 147)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(jButton4)
-               .addComponent(jButton1)
-               .addComponent(jButton3)
-               .addGroup(layout.createSequentialGroup()
-                  .addGap(8, 8, 8)
-                  .addComponent(jButton2)))
-            .addContainerGap(76, Short.MAX_VALUE))
+            .addGap(269, 269, 269)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+               .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+               .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+            .addContainerGap(311, Short.MAX_VALUE))
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,7 +81,7 @@ public class CovidViewData extends javax.swing.JFrame {
             .addComponent(jButton3)
             .addGap(18, 18, 18)
             .addComponent(jButton4)
-            .addContainerGap(79, Short.MAX_VALUE))
+            .addContainerGap(179, Short.MAX_VALUE))
       );
 
       pack();
@@ -92,9 +96,13 @@ public class CovidViewData extends javax.swing.JFrame {
       //super.dispose();
       //setVisible(false); //you can't see me!
       //dispose(); //Destroy the JFrame object
-      
       super.setVisible(false);
    }//GEN-LAST:event_jButton4ActionPerformed
+
+   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      // TODO add your handling code here:
+       new CovidViewDataMap().setVisible(true);
+   }//GEN-LAST:event_jButton2ActionPerformed
 
    /**
     * @param args the command line arguments
@@ -126,7 +134,7 @@ public class CovidViewData extends javax.swing.JFrame {
       /* Create and display the form */
       java.awt.EventQueue.invokeLater(new Runnable() {
          public void run() {
-            new CovidViewData().setVisible(true);
+             new CovidViewDataMap().setVisible(true);
          }
       });
    }
