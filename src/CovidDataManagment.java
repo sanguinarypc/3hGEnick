@@ -40,8 +40,10 @@ public class CovidDataManagment extends javax.swing.JFrame {
 
       setTitle("Σύστημα Covid19-Stats");
       setPreferredSize(new java.awt.Dimension(800, 600));
+      setSize(new java.awt.Dimension(800, 600));
       getContentPane().setLayout(null);
 
+      jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton1.setText("Εισαγωγή χωρών");
       jButton1.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,20 +51,24 @@ public class CovidDataManagment extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton1);
-      jButton1.setBounds(270, 200, 220, 23);
+      jButton1.setBounds(270, 180, 238, 43);
 
+      jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton2.setText("Εισαγωγή δεδομένων");
       getContentPane().add(jButton2);
-      jButton2.setBounds(270, 240, 220, 23);
+      jButton2.setBounds(270, 240, 238, 43);
 
+      jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton3.setText("Διαγραφή δεδομένων");
       getContentPane().add(jButton3);
-      jButton3.setBounds(270, 280, 220, 23);
+      jButton3.setBounds(270, 300, 238, 43);
 
+      jButton4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton4.setText("Διαγραφή χωρών  ");
       getContentPane().add(jButton4);
-      jButton4.setBounds(270, 320, 220, 23);
+      jButton4.setBounds(270, 360, 238, 43);
 
+      jButton5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton5.setText("Έξοδος διαχείρισης δεδομένων");
       jButton5.setToolTipText("Έξοδος διαχείρισης δεδομένων");
       jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -71,11 +77,11 @@ public class CovidDataManagment extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton5);
-      jButton5.setBounds(270, 360, 220, 23);
+      jButton5.setBounds(520, 480, 238, 43);
 
       jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\covid19Background.png")); // NOI18N
       getContentPane().add(jLabel1);
-      jLabel1.setBounds(10, 11, 765, 587);
+      jLabel1.setBounds(-5, -2, 800, 600);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents

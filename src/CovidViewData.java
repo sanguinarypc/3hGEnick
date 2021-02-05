@@ -41,8 +41,10 @@ public class CovidViewData extends javax.swing.JFrame {
 
       setTitle("Σύστημα Covid19-Stats");
       setPreferredSize(new java.awt.Dimension(800, 600));
+      setResizable(false);
       getContentPane().setLayout(null);
 
+      jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton1.setText("Προβολή σε διάγραμμα");
       jButton1.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,8 +52,9 @@ public class CovidViewData extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton1);
-      jButton1.setBounds(290, 234, 220, 30);
+      jButton1.setBounds(290, 210, 238, 43);
 
+      jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton2.setText("Προβολή σε Χάρτη");
       jButton2.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,12 +62,14 @@ public class CovidViewData extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton2);
-      jButton2.setBounds(290, 275, 220, 30);
+      jButton2.setBounds(290, 270, 238, 43);
 
+      jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton3.setText("Διαγραφή δεδομένων");
       getContentPane().add(jButton3);
-      jButton3.setBounds(290, 316, 220, 30);
+      jButton3.setBounds(290, 330, 238, 43);
 
+      jButton4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton4.setText("Έξοδος Προβολής δεδομένων");
       jButton4.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,10 +77,12 @@ public class CovidViewData extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton4);
-      jButton4.setBounds(290, 364, 220, 30);
+      jButton4.setBounds(550, 500, 238, 43);
 
+      jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/covid19Background.png"))); // NOI18N
       jLabel1.setText("jLabel1");
+      jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
       getContentPane().add(jLabel1);
       jLabel1.setBounds(0, 0, 800, 600);
 
@@ -101,7 +108,7 @@ public class CovidViewData extends javax.swing.JFrame {
 
    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       // TODO add your handling code here:
-      final CovidLineChart demo = new CovidLineChart("Line Chart Demo");
+      final CovidLineChart demo = new CovidLineChart("Covid19 Line Chart");
       demo.pack();
       RefineryUtilities.centerFrameOnScreen(demo);
       demo.setVisible(true);

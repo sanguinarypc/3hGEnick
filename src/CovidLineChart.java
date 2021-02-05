@@ -143,7 +143,7 @@ public class CovidLineChart extends ApplicationFrame {
         
         // create the chart...
         final JFreeChart chart = ChartFactory.createLineChart(
-            "Line Chart Demo 1",       // chart title
+            "Covid19 Line Chart",      // chart title
             "Type",                    // domain axis label
             "Value",                   // range axis label
             dataset,                   // data

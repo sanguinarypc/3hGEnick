@@ -49,28 +49,32 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       setPreferredSize(new java.awt.Dimension(800, 600));
       getContentPane().setLayout(null);
 
-      jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+      jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jLabel1.setText("Επιλογή μιας βασικής χώρας");
       getContentPane().add(jLabel1);
-      jLabel1.setBounds(100, 42, 173, 15);
+      jLabel1.setBounds(100, 50, 173, 15);
 
+      jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
       getContentPane().add(jComboBox1);
-      jComboBox1.setBounds(100, 75, 173, 20);
+      jComboBox1.setBounds(100, 75, 173, 23);
 
-      jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+      jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jLabel2.setText("Πολλαπλή επιλογή λοιπόν χωρών");
       getContentPane().add(jLabel2);
-      jLabel2.setBounds(404, 42, 206, 15);
+      jLabel2.setBounds(480, 50, 172, 17);
 
+      jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jLabel3.setText("Από Ημερομηνία");
       getContentPane().add(jLabel3);
-      jLabel3.setBounds(100, 142, 78, 14);
+      jLabel3.setBounds(100, 142, 84, 17);
 
+      jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jLabel4.setText("Έως Ημερομηνία");
       getContentPane().add(jLabel4);
-      jLabel4.setBounds(100, 185, 80, 14);
+      jLabel4.setBounds(100, 185, 100, 17);
 
+      jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton1.setText("Προβολή χάρτη");
       jButton1.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,8 +82,9 @@ public class CovidViewDataMap extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton1);
-      jButton1.setBounds(404, 181, 151, 23);
+      jButton1.setBounds(540, 460, 238, 43);
 
+      jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton2.setText("Έξοδος προβολής χάρτη");
       jButton2.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,11 +92,11 @@ public class CovidViewDataMap extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton2);
-      jButton2.setBounds(404, 236, 151, 23);
+      jButton2.setBounds(540, 530, 238, 43);
 
       jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\covid19Background.png")); // NOI18N
       getContentPane().add(jLabel5);
-      jLabel5.setBounds(0, -1, 800, 600);
+      jLabel5.setBounds(0, 0, 800, 600);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
