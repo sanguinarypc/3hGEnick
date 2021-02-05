@@ -43,6 +43,7 @@
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JFrame;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -60,7 +61,11 @@ import org.jfree.ui.RefineryUtilities;
  * A simple demonstration application showing how to create a line chart using data from a
  * {@link CategoryDataset}.
  */
-public class CovidLineChart extends ApplicationFrame {
+
+       // public class CovidLineChart extends ApplicationFrame {
+       // Άλλαξα την κλάση application frame σε jframe και κατάφερα να το κάνω 
+       // να μην κλείνει τελείως στην εφαρμογή και να κλείνει μόνο το παράθυρο       
+public class CovidLineChart extends JFrame {
 
     /**
      * Creates a new demo.
