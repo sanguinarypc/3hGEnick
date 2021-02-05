@@ -43,21 +43,33 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       jLabel4 = new javax.swing.JLabel();
       jButton1 = new javax.swing.JButton();
       jButton2 = new javax.swing.JButton();
+      jLabel5 = new javax.swing.JLabel();
 
       setTitle("Σύστημα Covid19-Stats");
       setPreferredSize(new java.awt.Dimension(800, 600));
+      getContentPane().setLayout(null);
 
       jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
       jLabel1.setText("Επιλογή μιας βασικής χώρας");
+      getContentPane().add(jLabel1);
+      jLabel1.setBounds(100, 42, 173, 15);
 
       jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+      getContentPane().add(jComboBox1);
+      jComboBox1.setBounds(100, 75, 173, 20);
 
       jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
       jLabel2.setText("Πολλαπλή επιλογή λοιπόν χωρών");
+      getContentPane().add(jLabel2);
+      jLabel2.setBounds(404, 42, 206, 15);
 
       jLabel3.setText("Από Ημερομηνία");
+      getContentPane().add(jLabel3);
+      jLabel3.setBounds(100, 142, 78, 14);
 
       jLabel4.setText("Έως Ημερομηνία");
+      getContentPane().add(jLabel4);
+      jLabel4.setBounds(100, 185, 80, 14);
 
       jButton1.setText("Προβολή χάρτη");
       jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +77,8 @@ public class CovidViewDataMap extends javax.swing.JFrame {
             jButton1ActionPerformed(evt);
          }
       });
+      getContentPane().add(jButton1);
+      jButton1.setBounds(404, 181, 151, 23);
 
       jButton2.setText("Έξοδος προβολής χάρτη");
       jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,48 +86,12 @@ public class CovidViewDataMap extends javax.swing.JFrame {
             jButton2ActionPerformed(evt);
          }
       });
+      getContentPane().add(jButton2);
+      jButton2.setBounds(404, 236, 151, 23);
 
-      javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-      getContentPane().setLayout(layout);
-      layout.setHorizontalGroup(
-         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGroup(layout.createSequentialGroup()
-            .addGap(100, 100, 100)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(jLabel3)
-               .addGroup(layout.createSequentialGroup()
-                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                     .addComponent(jLabel4))
-                  .addGap(131, 131, 131)
-                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                     .addComponent(jLabel2)
-                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-            .addContainerGap(190, Short.MAX_VALUE))
-      );
-      layout.setVerticalGroup(
-         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGroup(layout.createSequentialGroup()
-            .addGap(42, 42, 42)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-               .addComponent(jLabel1)
-               .addComponent(jLabel2))
-            .addGap(18, 18, 18)
-            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(47, 47, 47)
-            .addComponent(jLabel3)
-            .addGap(25, 25, 25)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-               .addComponent(jLabel4)
-               .addComponent(jButton1))
-            .addGap(32, 32, 32)
-            .addComponent(jButton2)
-            .addContainerGap(141, Short.MAX_VALUE))
-      );
+      jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\covid19Background.png")); // NOI18N
+      getContentPane().add(jLabel5);
+      jLabel5.setBounds(0, -1, 800, 600);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -188,5 +166,6 @@ public class CovidViewDataMap extends javax.swing.JFrame {
    private javax.swing.JLabel jLabel2;
    private javax.swing.JLabel jLabel3;
    private javax.swing.JLabel jLabel4;
+   private javax.swing.JLabel jLabel5;
    // End of variables declaration//GEN-END:variables
 }
