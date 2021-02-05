@@ -219,13 +219,14 @@ public class CovidLineChart extends JFrame {
      *
      * @param args  ignored.
      */
-    public static void main(final String[] args) {
-
-        final CovidLineChart demo = new CovidLineChart("Line Chart Demo");
-        demo.pack();
-        RefineryUtilities.centerFrameOnScreen(demo);
-        demo.setVisible(true);
-
-    }
+    // Βάζω σε σχόλια την Public static void main Γιατί δεν χρειάζεται να καλείτε
+//    public static void main(final String[] args) {
+//
+//        final CovidLineChart demo = new CovidLineChart("Line Chart Demo");
+//        demo.pack();
+//        RefineryUtilities.centerFrameOnScreen(demo);
+//        demo.setVisible(true);
+//
+//    }
 
 }
