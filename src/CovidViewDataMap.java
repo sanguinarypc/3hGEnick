@@ -82,7 +82,7 @@ public class CovidViewDataMap extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton1);
-      jButton1.setBounds(540, 460, 238, 43);
+      jButton1.setBounds(540, 430, 238, 43);
 
       jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton2.setText("Έξοδος προβολής χάρτη");
@@ -92,7 +92,7 @@ public class CovidViewDataMap extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton2);
-      jButton2.setBounds(540, 530, 238, 43);
+      jButton2.setBounds(540, 500, 238, 43);
 
       jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\covid19Background.png")); // NOI18N
       getContentPane().add(jLabel5);
