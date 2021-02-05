@@ -1,4 +1,6 @@
 
+//import helper.EconometricaRunable;
+import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
@@ -196,6 +198,12 @@ public class Covid19Stats extends javax.swing.JFrame {
       java.awt.EventQueue.invokeLater(new Runnable() {
          public void run() {
             new Covid19Stats().setVisible(true);
+            //SwingUtilities.invokeLater(new EconometricaRunable());
+            //SwingUtilities invokeLater;
+            //invokeLater = SwingUtilities.invokeLater(new Covid19Stats().setVisible(true));
+            
+            
+            
          }
       });
    }

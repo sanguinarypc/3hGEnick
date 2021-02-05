@@ -37,7 +37,6 @@ public class CovidDataManagment extends javax.swing.JFrame {
       jButton4 = new javax.swing.JButton();
       jButton5 = new javax.swing.JButton();
 
-      setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       setTitle("Σύστημα Covid19-Stats");
       setPreferredSize(new java.awt.Dimension(800, 600));
 
