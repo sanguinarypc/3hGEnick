@@ -36,6 +36,8 @@ public class CovidViewDataMap extends javax.swing.JFrame {
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
 
+      country1 = new model.Country();
+      entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("3hGEnickPU").createEntityManager();
       jLabel1 = new javax.swing.JLabel();
       jComboBox1 = new javax.swing.JComboBox<>();
       jLabel2 = new javax.swing.JLabel();
@@ -43,6 +45,7 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       jLabel4 = new javax.swing.JLabel();
       jButton1 = new javax.swing.JButton();
       jButton2 = new javax.swing.JButton();
+      jTextField1 = new javax.swing.JTextField();
       jLabel5 = new javax.swing.JLabel();
 
       setTitle("Σύστημα Covid19-Stats");
@@ -55,7 +58,12 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       jLabel1.setBounds(100, 50, 173, 15);
 
       jComboBox1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-      jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+      jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1", "item 2", "Item 3", "Item 4" }));
+      jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jComboBox1ActionPerformed(evt);
+         }
+      });
       getContentPane().add(jComboBox1);
       jComboBox1.setBounds(100, 75, 173, 23);
 
@@ -94,6 +102,15 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       getContentPane().add(jButton2);
       jButton2.setBounds(540, 500, 238, 43);
 
+      jTextField1.setText("jTextField1");
+      jTextField1.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jTextField1ActionPerformed(evt);
+         }
+      });
+      getContentPane().add(jTextField1);
+      jTextField1.setBounds(480, 70, 59, 20);
+
       jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\covid19Background.png")); // NOI18N
       getContentPane().add(jLabel5);
       jLabel5.setBounds(0, 0, 800, 600);
@@ -126,6 +143,14 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       //dispose(); //Destroy the JFrame object
       super.setVisible(false);
    }//GEN-LAST:event_jButton2ActionPerformed
+
+   private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+      // TODO add your handling code here:
+   }//GEN-LAST:event_jTextField1ActionPerformed
+
+   private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+      // TODO add your handling code here:
+   }//GEN-LAST:event_jComboBox1ActionPerformed
 
    /**
     * @param args the command line arguments
@@ -164,6 +189,8 @@ public class CovidViewDataMap extends javax.swing.JFrame {
 //   }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private model.Country country1;
+   private javax.persistence.EntityManager entityManager1;
    private javax.swing.JButton jButton1;
    private javax.swing.JButton jButton2;
    private javax.swing.JComboBox<String> jComboBox1;
@@ -172,5 +199,6 @@ public class CovidViewDataMap extends javax.swing.JFrame {
    private javax.swing.JLabel jLabel3;
    private javax.swing.JLabel jLabel4;
    private javax.swing.JLabel jLabel5;
+   private javax.swing.JTextField jTextField1;
    // End of variables declaration//GEN-END:variables
 }

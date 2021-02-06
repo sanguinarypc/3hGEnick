@@ -5,7 +5,22 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import model.Country;
+import model.CountryJpaController;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -195,6 +210,48 @@ public class Covid19Stats extends javax.swing.JFrame {
             //SwingUtilities.invokeLater(new EconometricaRunable());
             //SwingUtilities invokeLater;
             //invokeLater = SwingUtilities.invokeLater(new Covid19Stats().setVisible(true));
+            
+            // Δημιουργώ μια μεταβλητή EntityManagerFactory 
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("3hGEnickPU"); 
+            EntityManager em = emf.createEntityManager();//EntityManager em; 
+            CountryJpaController sjc = new CountryJpaController(emf);
+            
+                        
+            //Δημιουργώ μία Οντότητα
+            Country newCounty1 = new Country( 2, "France");
+            Country newCounty2 = new Country( 3, "Italy");
+            try {
+               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
+               sjc.create(newCounty1);
+               sjc.create(newCounty2);
+               
+            } catch (Exception ex) {
+               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            //*****************************************************************
+            // Http connection για τράβηγμα δεδομένων από το site που 
+            // παρέχει πληροφορίες για τον Covid19
+ 
+            String urlToCall = "https://covid2019-api.herokuapp.com/countries";
+            OkHttpClient client=new OkHttpClient();
+        
+            Request request = new Request.Builder().url(urlToCall).build();
+        
+            try (Response response = client.newCall(request).execute()) {
+               if (response.isSuccessful() && response.body() != null) {
+                   String responseString=response.body().string();
+                  System.out.println(responseString);
+               }
+            }
+            catch (IOException e){
+               e.printStackTrace();
+            }           
+            
+            //*****************************************************************
+            
+            
             
             
             
