@@ -8,7 +8,7 @@ public class OkHTTPTest {
     public static void main(String[] args) {
         
         //Το αρχικό String μας δώσανε στην εκφώνηση
-        //String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
+        String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
         
         // String που τοποθετώ εγώ στον κώδικα μόνο και μόνο για να κάνω δοκιμές
         
@@ -47,7 +47,7 @@ public class OkHTTPTest {
         // Εντολή 7 του API
         //    /countries                  Affected Countries
         // No parameters
-        String urlToCall = "https://covid2019-api.herokuapp.com/countries";
+        //..String urlToCall = "https://covid2019-api.herokuapp.com/countries";
         
         // Εντολή 8 του API
         //  /country/{country_name}       Country
@@ -97,7 +97,7 @@ public class OkHTTPTest {
         // Get the total numbers of confirmed cases
         // confirmed: confirmed cases
         // /v2/comfirmed Get Comfirmed
-        //String urlToCall = "https://covid2019-api.herokuapp.com/v2/comfirmed";
+        //String urlToCall = "https://covid2019-api.herokuapp.com/v2/confirmed";
         
         // Εντολή 5 του API
         // Get the total numbers of confirmed cases

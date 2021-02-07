@@ -1,5 +1,6 @@
 
 //import helper.EconometricaRunable;
+import com.google.gson.Gson;
 import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -9,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -20,6 +22,7 @@ import javax.swing.JFrame;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import model.Country;
 import model.CountryJpaController;
 import okhttp3.OkHttpClient;
@@ -210,29 +213,6 @@ public class Covid19Stats extends javax.swing.JFrame {
       /* Create and display the form */
       java.awt.EventQueue.invokeLater(new Runnable() {
          public void run() {
-            new Covid19Stats().setVisible(true);
-            //SwingUtilities.invokeLater(new EconometricaRunable());
-            //SwingUtilities invokeLater;
-            //invokeLater = SwingUtilities.invokeLater(new Covid19Stats().setVisible(true));
-            
-            // Δημιουργώ μια μεταβλητή EntityManagerFactory 
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("3hGEnickPU"); 
-            EntityManager em = emf.createEntityManager();//EntityManager em; 
-            CountryJpaController sjc = new CountryJpaController(emf);
-            
-                        
-//            //Δημιουργώ μία Οντότητα
-//            Country newCounty1 = new Country( 2, "France");
-//            Country newCounty2 = new Country( 3, "Italy");
-//            try {
-//               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
-//               sjc.create(newCounty1);
-//               sjc.create(newCounty2);
-//               
-//            } catch (Exception ex) {
-//               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            
             
             //*****************************************************************
             // Http connection για τράβηγμα δεδομένων από το site που 
@@ -242,7 +222,9 @@ public class Covid19Stats extends javax.swing.JFrame {
             // to put the data from the web link
             String CountryInJsonFormat = null;
  
-            String urlToCall = "https://covid2019-api.herokuapp.com/countries";
+            //String urlToCall = "https://covid2019-api.herokuapp.com/countries";
+            //String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
+            String urlToCall = "https://covid2019-api.herokuapp.com/v2/confirmed";
             OkHttpClient client=new OkHttpClient();
         
             Request request = new Request.Builder().url(urlToCall).build();
@@ -264,8 +246,8 @@ public class Covid19Stats extends javax.swing.JFrame {
             // I want to do some tests for json format so i crate a new String
             // System.out.println(CountryInJsonFormat);
             // εμφάνιση του κομμένου string αφού αφαιρέσουμε τα διπλά εισαγωγικά
-            CountryInJsonFormat = CountryInJsonFormat.replaceAll("\"", ""); 
-            System.out.println(CountryInJsonFormat);
+            // CountryInJsonFormat = CountryInJsonFormat.replaceAll("\"", ""); 
+            // System.out.println(CountryInJsonFormat);
              
              
 // example             
@@ -275,6 +257,65 @@ public class Covid19Stats extends javax.swing.JFrame {
 //            System.out.println(arrSplit_2[i]);
 //            }
              
+            
+            
+            
+            
+            
+            new Covid19Stats().setVisible(true);
+            //SwingUtilities.invokeLater(new EconometricaRunable());
+            //SwingUtilities invokeLater;
+            //invokeLater = SwingUtilities.invokeLater(new Covid19Stats().setVisible(true));
+            
+            // Δημιουργώ μια μεταβλητή EntityManagerFactory 
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("3hGEnickPU"); 
+            EntityManager em = emf.createEntityManager();//EntityManager em; 
+            CountryJpaController sjc = new CountryJpaController(emf);
+            
+                        
+//            //Δημιουργώ μία Οντότητα
+            Country newCountry1 = new Country( 4, "France");
+            Country newCountry2 = new Country( 5, "Italy");
+//            try {
+//               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
+//               sjc.create(newCountry1);
+//               sjc.create(newCountry2);
+//               
+//            } catch (Exception ex) {
+//               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+
+ Gson gson = new Gson();  
+ //TestData testdata = gson.fromJson(CountryInJsonFormat,TestData.class);
+ Country country = gson.fromJson(CountryInJsonFormat,Country.class);
+   //ObjectMapper mapper = new ObjectMapper();
+   Map<String,Object> map = mapper.readValue(json, Map.class);
+ try{
+            em = emf.createEntityManager();
+            em.getTransaction().begin();
+//            for(CountryDataset cdslist: countryDatasetList){            
+//                em.persist(cdslist);                        
+//            }
+
+            
+            em.persist(newCountry1);  
+            
+            em.getTransaction().commit();
+            em.clear();
+        }catch(PersistenceException ex){
+            System.out.println(ex.getMessage());
+                             
+        }catch(Exception ex){
+          
+        }finally {
+            em.close();
+        }
+
+
+
+
+            
             
              
                  

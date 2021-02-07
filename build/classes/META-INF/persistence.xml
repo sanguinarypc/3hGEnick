@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>model.Coviddata</class>
     <class>model.Country</class>
+    <class>model.Confirmed</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/covid19DB"/>
       <property name="javax.persistence.jdbc.user" value="pli24"/>
