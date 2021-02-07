@@ -3,11 +3,15 @@
 import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 import java.awt.Frame;
+import static java.awt.SystemColor.text;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -217,22 +221,26 @@ public class Covid19Stats extends javax.swing.JFrame {
             CountryJpaController sjc = new CountryJpaController(emf);
             
                         
-            //Δημιουργώ μία Οντότητα
-            Country newCounty1 = new Country( 2, "France");
-            Country newCounty2 = new Country( 3, "Italy");
-            try {
-               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
-               sjc.create(newCounty1);
-               sjc.create(newCounty2);
-               
-            } catch (Exception ex) {
-               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+//            //Δημιουργώ μία Οντότητα
+//            Country newCounty1 = new Country( 2, "France");
+//            Country newCounty2 = new Country( 3, "Italy");
+//            try {
+//               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
+//               sjc.create(newCounty1);
+//               sjc.create(newCounty2);
+//               
+//            } catch (Exception ex) {
+//               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
             
             //*****************************************************************
             // Http connection για τράβηγμα δεδομένων από το site που 
             // παρέχει πληροφορίες για τον Covid19
+            
+            // I want to do some tests for json format so i crate a new String
+            // to put the data from the web link
+            String CountryInJsonFormat = null;
  
             String urlToCall = "https://covid2019-api.herokuapp.com/countries";
             OkHttpClient client=new OkHttpClient();
@@ -242,6 +250,7 @@ public class Covid19Stats extends javax.swing.JFrame {
             try (Response response = client.newCall(request).execute()) {
                if (response.isSuccessful() && response.body() != null) {
                    String responseString=response.body().string();
+                   CountryInJsonFormat = responseString;
                   System.out.println(responseString);
                }
             }
@@ -251,8 +260,32 @@ public class Covid19Stats extends javax.swing.JFrame {
             
             //*****************************************************************
             
+            // display again the String
+            // I want to do some tests for json format so i crate a new String
+            // System.out.println(CountryInJsonFormat);
+            // εμφάνιση του κομμένου string αφού αφαιρέσουμε τα διπλά εισαγωγικά
+            CountryInJsonFormat = CountryInJsonFormat.replaceAll("\"", ""); 
+            System.out.println(CountryInJsonFormat);
+             
+             
+// example             
+//            String strMain = "Alpha\" Beta\" Delta\" Gamma\" Sigma";
+//            String[] arrSplit_2 = strMain.split("\"", 5);
+//            for (int i=0; i < arrSplit_2.length; i++){
+//            System.out.println(arrSplit_2[i]);
+//            }
+             
             
+             
+                 
+                  
             
+
+              
+             
+             
+             
+             
             
             
          }
