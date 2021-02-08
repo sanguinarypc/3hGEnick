@@ -23,6 +23,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
+import model.CountriesList;
 import model.Country;
 import model.CountryJpaController;
 import okhttp3.OkHttpClient;
@@ -222,9 +223,9 @@ public class Covid19Stats extends javax.swing.JFrame {
             // to put the data from the web link
             String CountryInJsonFormat = null;
  
-            //String urlToCall = "https://covid2019-api.herokuapp.com/countries";
+            String urlToCall = "https://covid2019-api.herokuapp.com/countries";
             //String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
-            String urlToCall = "https://covid2019-api.herokuapp.com/v2/confirmed";
+            //String urlToCall = "https://covid2019-api.herokuapp.com/v2/confirmed";
             OkHttpClient client=new OkHttpClient();
         
             Request request = new Request.Builder().url(urlToCall).build();
@@ -286,31 +287,72 @@ public class Covid19Stats extends javax.swing.JFrame {
 //            }
 //            
 
- Gson gson = new Gson();  
- //TestData testdata = gson.fromJson(CountryInJsonFormat,TestData.class);
- Country country = gson.fromJson(CountryInJsonFormat,Country.class);
-   //ObjectMapper mapper = new ObjectMapper();
-   Map<String,Object> map = mapper.readValue(json, Map.class);
- try{
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
-//            for(CountryDataset cdslist: countryDatasetList){            
-//                em.persist(cdslist);                        
-//            }
+            //Επεξεργασία Οντότητας
+            //newStudent1.setName("Gerasimakos");
+            //newStudent1.setSurname("Surname");
+            //newStudent1.setTelephone("100");
+            //sjc.edit(newStudent1);
+        
+            //Διαγραφή Οντότητας
+            //sjc.destroy(1);
 
+
+//Ζήτα απο το API την λίστα των χωρών
+ //   public CountriesList GetCountriesList() {
+        // φτιάχνουμε το endpoint και κάνουμε την κλήση του API
+        // String restPoint = "countries";
+        String stringResults = CountryInJsonFormat;
+
+//  BaseCall(restPoint);
+        //Μετατρέπουμε το jsonstring σε αντικείμενο με την βοήθεια τoυ gson 
+        CountriesList cl = new Gson().fromJson(stringResults, CountriesList.class);
+   //     return cl;
+   // }            
+            System.out.println(cl);
             
-            em.persist(newCountry1);  
+            int i = 0;
+            for (String c: cl.countries ){
+               System.out.println(c);
+               Country newCountry = new Country(i , c);
+               i++;
+            try {
+               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
+               sjc.create(newCountry);
+             
+               
+            } catch (Exception ex) {
+               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
             
-            em.getTransaction().commit();
-            em.clear();
-        }catch(PersistenceException ex){
-            System.out.println(ex.getMessage());
-                             
-        }catch(Exception ex){
-          
-        }finally {
-            em.close();
-        }
+            
+            
+
+// Gson gson = new Gson();  
+// //TestData testdata = gson.fromJson(CountryInJsonFormat,TestData.class);
+// Country country = gson.fromJson(CountryInJsonFormat,Country.class);
+//   //ObjectMapper mapper = new ObjectMapper();
+//   Map<String,Object> map = mapper.readValue(json, Map.class);
+// try{
+//            em = emf.createEntityManager();
+//            em.getTransaction().begin();
+////            for(CountryDataset cdslist: countryDatasetList){            
+////                em.persist(cdslist);                        
+////            }
+//
+//            
+//            em.persist(newCountry1);  
+//            
+//            em.getTransaction().commit();
+//            em.clear();
+//        }catch(PersistenceException ex){
+//            System.out.println(ex.getMessage());
+//                             
+//        }catch(Exception ex){
+//          
+//        }finally {
+//            em.close();
+//        }
 
 
 

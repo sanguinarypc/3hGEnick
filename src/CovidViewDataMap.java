@@ -1,7 +1,14 @@
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import model.Country;
+import model.CountryJpaController;
 import okhttp3.OkHttpClient;
 
 /*
@@ -25,6 +32,7 @@ public class CovidViewDataMap extends javax.swing.JFrame {
       // ανεξάρτητα από την ανάλυση της οθόνης
       this.pack();
       this.setLocationRelativeTo(null);
+      loadResults();
    }
 
    /**
@@ -150,8 +158,28 @@ public class CovidViewDataMap extends javax.swing.JFrame {
 
    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
       // TODO add your handling code here:
+      
+      
    }//GEN-LAST:event_jComboBox1ActionPerformed
 
+   private void loadResults(){
+      // Δημιουργώ μια μεταβλητή EntityManagerFactory 
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("3hGEnickPU"); 
+            EntityManager em = emf.createEntityManager();//EntityManager em; 
+            CountryJpaController sjc = new CountryJpaController(emf);
+            TypedQuery<Country> query = em.createQuery("SELECT c FROM Country c", Country.class);
+            List<Country> results = query.getResultList();
+            //System.out.println(results);
+            jComboBox1.removeAllItems();
+            for (Country c : results) {
+              // System.out.println(c.getName());
+              
+              jComboBox1.addItem(c.getName());
+            }
+            
+   }
+   
+   
    /**
     * @param args the command line arguments
     */
