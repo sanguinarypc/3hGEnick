@@ -23,9 +23,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
-import model.CountriesList;
-import model.Country;
-import model.CountryJpaController;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -155,6 +152,11 @@ public class Covid19Stats extends javax.swing.JFrame {
       new CovidViewData().setVisible(true);
    }//GEN-LAST:event_jButton2ActionPerformed
 
+   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      // TODO add your handling code here:
+      new CovidViewData().setVisible(true);
+   }//GEN-LAST:event_jButton3ActionPerformed
+ 	
    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
       // TODO add your handling code here:
       // Εξοδος απο την εφαρμογη   
@@ -164,10 +166,6 @@ public class Covid19Stats extends javax.swing.JFrame {
       // Covid19Stats.setDefaultCloseOperation(Covid19Stats.EXIT_ON_CLOSE);
    }//GEN-LAST:event_jButton4ActionPerformed
 
-   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       // TODO add your handling code here:
-      new CovidViewData().setVisible(true);
-   }//GEN-LAST:event_jButton3ActionPerformed
 
    
 
@@ -214,166 +212,10 @@ public class Covid19Stats extends javax.swing.JFrame {
       /* Create and display the form */
       java.awt.EventQueue.invokeLater(new Runnable() {
          public void run() {
-            
-            //*****************************************************************
-            // Http connection για τράβηγμα δεδομένων από το site που 
-            // παρέχει πληροφορίες για τον Covid19
-            
-            // I want to do some tests for json format so i crate a new String
-            // to put the data from the web link
-            String CountryInJsonFormat = null;
- 
-            String urlToCall = "https://covid2019-api.herokuapp.com/countries";
-            //String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
-            //String urlToCall = "https://covid2019-api.herokuapp.com/v2/confirmed";
-            OkHttpClient client=new OkHttpClient();
-        
-            Request request = new Request.Builder().url(urlToCall).build();
-        
-            try (Response response = client.newCall(request).execute()) {
-               if (response.isSuccessful() && response.body() != null) {
-                   String responseString=response.body().string();
-                   CountryInJsonFormat = responseString;
-                  System.out.println(responseString);
-               }
-            }
-            catch (IOException e){
-               e.printStackTrace();
-            }           
-            
-            //*****************************************************************
-            
-            // display again the String
-            // I want to do some tests for json format so i crate a new String
-            // System.out.println(CountryInJsonFormat);
-            // εμφάνιση του κομμένου string αφού αφαιρέσουμε τα διπλά εισαγωγικά
-            // CountryInJsonFormat = CountryInJsonFormat.replaceAll("\"", ""); 
-            // System.out.println(CountryInJsonFormat);
-             
-             
-// example             
-//            String strMain = "Alpha\" Beta\" Delta\" Gamma\" Sigma";
-//            String[] arrSplit_2 = strMain.split("\"", 5);
-//            for (int i=0; i < arrSplit_2.length; i++){
-//            System.out.println(arrSplit_2[i]);
-//            }
-             
-            
-            
-            
-            
-            
-            new Covid19Stats().setVisible(true);
-            //SwingUtilities.invokeLater(new EconometricaRunable());
-            //SwingUtilities invokeLater;
-            //invokeLater = SwingUtilities.invokeLater(new Covid19Stats().setVisible(true));
-            
-            // Δημιουργώ μια μεταβλητή EntityManagerFactory 
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("3hGEnickPU"); 
-            EntityManager em = emf.createEntityManager();//EntityManager em; 
-            CountryJpaController sjc = new CountryJpaController(emf);
-            
-                        
-//            //Δημιουργώ μία Οντότητα
-            Country newCountry1 = new Country( 4, "France");
-            Country newCountry2 = new Country( 5, "Italy");
-//            try {
-//               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
-//               sjc.create(newCountry1);
-//               sjc.create(newCountry2);
-//               
-//            } catch (Exception ex) {
-//               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            
-
-            //Επεξεργασία Οντότητας
-            //newStudent1.setName("Gerasimakos");
-            //newStudent1.setSurname("Surname");
-            //newStudent1.setTelephone("100");
-            //sjc.edit(newStudent1);
-        
-            //Διαγραφή Οντότητας
-            //sjc.destroy(1);
-
-
-//Ζήτα απο το API την λίστα των χωρών
- //   public CountriesList GetCountriesList() {
-        // φτιάχνουμε το endpoint και κάνουμε την κλήση του API
-        // String restPoint = "countries";
-        String stringResults = CountryInJsonFormat;
-
-//  BaseCall(restPoint);
-        //Μετατρέπουμε το jsonstring σε αντικείμενο με την βοήθεια τoυ gson 
-        CountriesList cl = new Gson().fromJson(stringResults, CountriesList.class);
-   //     return cl;
-   // }            
-            System.out.println(cl);
-            
-            int i = 0;
-            for (String c: cl.countries ){
-               System.out.println(c);
-               Country newCountry = new Country(i , c);
-               i++;
-            try {
-               //Με τον Controller στέλνω την Οντότητα στην βάση δεδομένων
-               sjc.create(newCountry);
-             
-               
-            } catch (Exception ex) {
-               Logger.getLogger(Covid19Stats.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            }
-            
-            
-            
-
-// Gson gson = new Gson();  
-// //TestData testdata = gson.fromJson(CountryInJsonFormat,TestData.class);
-// Country country = gson.fromJson(CountryInJsonFormat,Country.class);
-//   //ObjectMapper mapper = new ObjectMapper();
-//   Map<String,Object> map = mapper.readValue(json, Map.class);
-// try{
-//            em = emf.createEntityManager();
-//            em.getTransaction().begin();
-////            for(CountryDataset cdslist: countryDatasetList){            
-////                em.persist(cdslist);                        
-////            }
-//
-//            
-//            em.persist(newCountry1);  
-//            
-//            em.getTransaction().commit();
-//            em.clear();
-//        }catch(PersistenceException ex){
-//            System.out.println(ex.getMessage());
-//                             
-//        }catch(Exception ex){
-//          
-//        }finally {
-//            em.close();
-//        }
-
-
-
-
-            
-            
-             
-                 
-                  
-            
-
-              
-             
-             
-             
-             
-            
-            
-         }
+           new Covid19Stats().setVisible(true); 
+      }
       });
-   }
+   }   
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JButton jButton1;

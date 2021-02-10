@@ -2,9 +2,9 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="3hGEnickPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>model.Coviddata</class>
-    <class>model.Country</class>
-    <class>model.Confirmed</class>
+    <class>models.Confirmed</class>
+    <class>Entities.Country</class>
+    <class>Entities.Coviddata</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/covid19DB"/>
       <property name="javax.persistence.jdbc.user" value="pli24"/>

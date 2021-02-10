@@ -7,9 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import model.Country;
-import model.CountryJpaController;
+import Entities.Country;
+import controllers.CountryJpaController;
 import okhttp3.OkHttpClient;
+import views.ShowMap;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -44,7 +45,7 @@ public class CovidViewDataMap extends javax.swing.JFrame {
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
 
-      country1 = new model.Country();
+      country1 = new Entities.Country();
       entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("3hGEnickPU").createEntityManager();
       jLabel1 = new javax.swing.JLabel();
       jComboBox1 = new javax.swing.JComboBox<>();
@@ -128,16 +129,10 @@ public class CovidViewDataMap extends javax.swing.JFrame {
 
    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       // TODO add your handling code here:
-       
-      String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
-      OkHttpClient client = new OkHttpClient();
-
-      String webpage="src\\covid19stats\\mappage.html";
-      try {
-         Runtime.getRuntime().exec("cmd /c start "+webpage);
-      } catch (IOException ex) {            
-         Logger.getLogger(CovidViewDataMap.class.getName()).log(Level.SEVERE, null, ex);            
-      }
+      // εμφάνιση web σελίδας
+      ShowMap showMap = new ShowMap();
+      showMap.Display();
+     
    }//GEN-LAST:event_jButton1ActionPerformed
 
    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -217,7 +212,7 @@ public class CovidViewDataMap extends javax.swing.JFrame {
 //   }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
-   private model.Country country1;
+   private Entities.Country country1;
    private javax.persistence.EntityManager entityManager1;
    private javax.swing.JButton jButton1;
    private javax.swing.JButton jButton2;

@@ -184,3 +184,35 @@ public class OkHTTPTest {
 
     }
 }
+
+
+
+
+//*****************************************************************************
+
+
+//*****************************************************************
+//            // Http connection για τράβηγμα δεδομένων από το site που 
+//            // παρέχει πληροφορίες για τον Covid19
+//            
+//            // I want to do some tests for json format so i crate a new String
+//            // to put the data from the web link
+//            String CountryInJsonFormat = null;
+// 
+//            String urlToCall = "https://covid2019-api.herokuapp.com/countries";
+//            //String urlToCall = "https://covid2019-api.herokuapp.com/timeseries/confirmed";
+//            //String urlToCall = "https://covid2019-api.herokuapp.com/v2/confirmed";
+//            OkHttpClient client=new OkHttpClient();
+//        
+//            Request request = new Request.Builder().url(urlToCall).build();
+//        
+//            try (Response response = client.newCall(request).execute()) {
+//               if (response.isSuccessful() && response.body() != null) {
+//                   String responseString=response.body().string();
+//                   CountryInJsonFormat = responseString;
+//                  System.out.println(responseString);
+//               }
+//            }
+//            catch (IOException e){
+//               e.printStackTrace();
+//            }           

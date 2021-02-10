@@ -1,8 +1,21 @@
+import java.util.List;
+//import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
+import controllers.APIController;
+import controllers.DbOperations;
+import models.TimeSeriesCase;
+import models.CountryTimeSeries;
+//import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+//import okhttp3.Response;
 
-import java.io.IOException;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+
+
+
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,6 +28,12 @@ import okhttp3.Response;
  * @author Owner
  */
 public class CovidDataManagment extends javax.swing.JFrame {
+
+   //private Object txtAreaMessage;
+   
+   APIController api = new APIController();
+   DbOperations dbOperations = new DbOperations();
+   
 
    /**
     * Creates new form CovidDataManagment
@@ -42,6 +61,8 @@ public class CovidDataManagment extends javax.swing.JFrame {
       jButton3 = new javax.swing.JButton();
       jButton4 = new javax.swing.JButton();
       jButton5 = new javax.swing.JButton();
+      jScorllPane1 = new javax.swing.JScrollPane();
+      txtAreaMessage = new javax.swing.JTextArea();
       jLabel1 = new javax.swing.JLabel();
 
       setTitle("Σύστημα Covid19-Stats");
@@ -57,22 +78,22 @@ public class CovidDataManagment extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton1);
-      jButton1.setBounds(270, 180, 238, 43);
+      jButton1.setBounds(270, 120, 238, 43);
 
       jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton2.setText("Εισαγωγή δεδομένων");
       getContentPane().add(jButton2);
-      jButton2.setBounds(270, 240, 238, 43);
+      jButton2.setBounds(270, 190, 238, 43);
 
       jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton3.setText("Διαγραφή δεδομένων");
       getContentPane().add(jButton3);
-      jButton3.setBounds(270, 300, 238, 43);
+      jButton3.setBounds(270, 260, 238, 43);
 
       jButton4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton4.setText("Διαγραφή χωρών  ");
       getContentPane().add(jButton4);
-      jButton4.setBounds(270, 360, 238, 43);
+      jButton4.setBounds(270, 320, 238, 43);
 
       jButton5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
       jButton5.setText("Έξοδος διαχείρισης δεδομένων");
@@ -83,7 +104,14 @@ public class CovidDataManagment extends javax.swing.JFrame {
          }
       });
       getContentPane().add(jButton5);
-      jButton5.setBounds(520, 480, 238, 43);
+      jButton5.setBounds(540, 510, 238, 43);
+
+      txtAreaMessage.setColumns(20);
+      txtAreaMessage.setRows(5);
+      jScorllPane1.setViewportView(txtAreaMessage);
+
+      getContentPane().add(jScorllPane1);
+      jScorllPane1.setBounds(150, 380, 490, 110);
 
       jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nick\\Desktop\\JavaCode\\3hGEnick\\src\\CovidPics\\covid19Background.png")); // NOI18N
       getContentPane().add(jLabel1);
@@ -93,64 +121,85 @@ public class CovidDataManagment extends javax.swing.JFrame {
    }// </editor-fold>//GEN-END:initComponents
 
    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      // TODO add your handling code here:
-      
-      
-      
-      
-      
-      
+//      // TODO add your handling code here:
+
+/////////////////////////////////////////////////////
+
+        DisableAllButtons();
+        txtAreaMessage.setText("ΠΑΡΑΚΑΛΩ ΠΕΡΙΜΕΝΕΤΕ.\n Εισαγωγή χωρών σε εξέλιξη.");
+        SwingWorker sw1 = new SwingWorker() {
+
+            @Override
+            protected Object doInBackground() throws Exception {
+                List<CountryTimeSeries> ltm = api.GetTimeSeries(TimeSeriesCase.CONFIRMED);
+                dbOperations.AddCountriesThatAreNotInDB(ltm);
+                return null;
+            }
+
+            @Override
+            protected void process(List chunks) {
+
+            }
+
+            @Override
+            protected void done() {
+                EnableAllButtons();
+                txtAreaMessage.setText("");
+            }
+        };
+
+        sw1.execute();
+
+
+
+
+
+/////////////////////////////////////////////////////
+
+
+
    }//GEN-LAST:event_jButton1ActionPerformed
 
+              
+
+   public void EnableAllButtons() {
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton4.setEnabled(true);
+        jButton5.setEnabled(true);
+        //jButton6.setEnabled(true);
+        //jButton7.setEnabled(true);
+    }
+
+    public void DisableAllButtons() {
+        jButton1.setEnabled(false);
+        jButton1.setEnabled(false);
+        jButton1.setEnabled(false);
+        jButton1.setEnabled(false);
+        jButton1.setEnabled(false);
+        //jButton1.setEnabled(false);
+        //jButton1.setEnabled(false);
+    } 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      // TODO add your handling code here:
-      //Closing JFrame with button click
-      // Κλείσιμο του JFrame με κλικ στο κουμπί
-      //this.dispose();
-      //frameToClose.dispose();
-      //super.dispose();
-      //setVisible(false); //you can't see me!
-      //dispose(); //Destroy the JFrame object
-      //System.exit(0); // stop program      
+     
       super.setVisible(false);
            
    }//GEN-LAST:event_jButton5ActionPerformed
 
-   /**
-    * @param args the command line arguments
-    */
-     // Βάζω σε σχόλια την Public static void main Γιατί δεν χρειάζεται να καλείτε
-//   public static void main(String args[]) {
-//      /* Set the Nimbus look and feel */
-//      //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//      /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//       */
-//      try {
-//         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//            if ("Nimbus".equals(info.getName())) {
-//               javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//               break;
-//            }
-//         }
-//      } catch (ClassNotFoundException ex) {
-//         java.util.logging.Logger.getLogger(CovidDataManagment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//      } catch (InstantiationException ex) {
-//         java.util.logging.Logger.getLogger(CovidDataManagment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//      } catch (IllegalAccessException ex) {
-//         java.util.logging.Logger.getLogger(CovidDataManagment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//      } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//         java.util.logging.Logger.getLogger(CovidDataManagment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//      }
-//      //</editor-fold>
-//
-//      /* Create and display the form */
-//      java.awt.EventQueue.invokeLater(new Runnable() {
-//         public void run() {
-//            new CovidDataManagment().setVisible(true);
-//         }
-//      });
-//   }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JButton jButton1;
@@ -159,5 +208,8 @@ public class CovidDataManagment extends javax.swing.JFrame {
    private javax.swing.JButton jButton4;
    private javax.swing.JButton jButton5;
    private javax.swing.JLabel jLabel1;
+   private javax.swing.JScrollPane jScorllPane1;
+   private javax.swing.JTextArea txtAreaMessage;
    // End of variables declaration//GEN-END:variables
+
 }

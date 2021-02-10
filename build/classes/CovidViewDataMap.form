@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="model.Country" name="country1">
+    <Component class="Entities.Country" name="country1">
     </Component>
     <Component class="javax.persistence.EntityManager" name="entityManager1">
       <Properties>
